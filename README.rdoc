@@ -1,3 +1,4 @@
-ruby 2.1.5p273
-Rails 4.2.4
-SQLite3
+ruby 2.1.5p273 <br>
+Rails 4.2.4 <br>
+SQLite3 <br>
+Sorcery Authentication
