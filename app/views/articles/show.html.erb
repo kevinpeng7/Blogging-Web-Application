@@ -10,10 +10,11 @@
 	<% end %>
 </p>
 
-
+<% if user_signed_in? %>
 <p><%= link_to "Edit", edit_article_path(@article) %></p>
 <p><%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Really delete this article?"} %>
 </p>
+<% end %>
 <p><%= link_to "<< Back to Articles List", articles_path %></p>
 <br/>
 <%= render partial: 'comments/form' %>

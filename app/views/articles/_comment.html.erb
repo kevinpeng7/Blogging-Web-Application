@@ -1,5 +1,10 @@
 <div>
-  <h5>Comment by <%=comment.author_name %></h5>
+  <h5>Comment by <%=comment.author_name %></h5> 
+  <p>
+  <% if user_signed_in? %>
+  <!--<%= link_to "delete", comment_path(comment), method: :delete %>-->
+  <% end %>
+</p>
   <h6><i>Posted <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago </i></h6>
   <p class="comment"><%= comment.body %></p>
 </div>
