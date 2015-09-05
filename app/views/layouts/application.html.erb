@@ -7,8 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
+  <p class="flash">
+    <%= flash.notice %>
+  </p>
+  <div id="container">
+    <div id="content">
+      <%= yield %>
+      <hr>
+      <h6>
+        <% if logged_in? %>
+          <%= "Logged in as #{current_user.email}" %>
+          <%= link_to "(logout)", logout_path %>
+        <% else %>
+          <%= link_to "(login)", login_path %>
+        <% end %>
+      </h6>
+    </div>
+  </div>
+=======
+
 <p class="flash"><%=flash.notice %></p>
 <%= yield %>
-
+>>>>>>> addDevise
 </body>
+
+<%= link_to 'Home', root_path %>
+<% if user_signed_in? %>
+  Logged in as: <%= current_user.name %>            
+  <%= link_to current_user.email, edit_user_registration_path %>
+  <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Log In', new_user_session_path %>
+  <%= link_to 'Sign Up', new_user_registration_path %>
+<% end %>
+
 </html>

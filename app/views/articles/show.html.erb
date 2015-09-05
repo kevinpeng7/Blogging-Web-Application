@@ -2,9 +2,23 @@
 <p><%=@article.body %></p></br>
 <p><i>Written: <%= @article.created_at %></i></p>
 <p><i>Last updated at: <%= @article.updated_at %></i></p>
+
+<p>
+	Tags:
+	<% @article.tags.each do |tag| %>
+		<%= link_to tag.name, tag_path(tag) %>
+	<% end %>
+</p>
+
+<<<<<<< HEAD
+<% if logged_in? %>
+=======
+
+>>>>>>> addDevise
 <p><%= link_to "Edit", edit_article_path(@article) %></p>
 <p><%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Really delete this article?"} %>
 </p>
+<% end %>
 <p><%= link_to "<< Back to Articles List", articles_path %></p>
 <br/>
 <%= render partial: 'comments/form' %>
