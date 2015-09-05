@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903223933) do
+ActiveRecord::Schema.define(version: 20150904043235) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -20,12 +20,39 @@ ActiveRecord::Schema.define(version: 20150903223933) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string   "username",         null: false
+    t.string   "email",            null: false
+    t.string   "crypted_password", null: false
+    t.string   "salt",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authors", ["email"], name: "index_authors_on_email", unique: true
+
   create_table "comments", force: :cascade do |t|
     t.string   "author_name"
     t.text     "body"
     t.integer  "article_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "taggings", ["article_id"], name: "index_taggings_on_article_id"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
